@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
           opacity: 0.6,
           justifyContent: "center"
         }}>
-          <a style={{textDecoration: "underline"}} href="/api">/api</a>
+          <Link style={{textDecoration: "underline"}} href="/api">/api</Link>
         </div>
       </div>
     </div>
