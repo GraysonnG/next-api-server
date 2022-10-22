@@ -28,5 +28,9 @@ export default function handler() {
         <span style={{opacity: .6,}}>Software Developer and Weeb</span>
       </div>
     </div>
-  ))
+  ),{
+    headers: {
+      'Cache-Control': 'max-age=0, s-maxage=5'
+    }
+  })
 }

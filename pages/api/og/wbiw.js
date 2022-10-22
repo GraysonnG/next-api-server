@@ -135,5 +135,9 @@ export default async function(req) {
         }}>{ images.length } shows and counting...</span>
       </div>
     </div>
-  ))
+  ),{
+    headers: {
+      'Cache-Control': 'max-age=0, s-maxage=5'
+    }
+  })
 }
