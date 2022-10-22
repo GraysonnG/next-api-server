@@ -5,7 +5,7 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-export default async function handler() {
+export default function handler() {
   return new ImageResponse((
     <div style={{
       display: "flex",
