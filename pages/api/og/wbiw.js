@@ -2,6 +2,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { ImageResponse } from "@vercel/og"
 
+export const config = {
+  runtime: 'experimental-edge',
+};
+
 const gqlQuery = `
   query {
     MediaListCollection(
@@ -31,10 +35,6 @@ const options = {
     query: gqlQuery,
     variables: {}
   })
-}
-
-export const config = {
-  runtime: 'experimental-edge'
 }
 
 export default async function(req) {
@@ -126,8 +126,5 @@ export default async function(req) {
   ), {
     width: 1200,
     height: 600,
-    headers: {
-      'Cache-Control': 'max-age=0, s-maxage=300'
-    }
   })
 }
