@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
@@ -11,7 +12,12 @@ export default function Home() {
       fontSize: 50,
       background: 'rgb(20, 20, 30)',
     }} className={styles.container}>
-      <div>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '1rem',
+      }}>
         Welcome to Blanks Server!
         <div style={{
           display: "flex",
@@ -22,6 +28,11 @@ export default function Home() {
         }}>
           <Link style={{textDecoration: "underline"}} href="/api">/api</Link>
         </div>
+        <img style={{
+          display: 'inline-block',
+          width: 300,
+          aspectRatio: "2/1",
+        }} src="/api/og/wbiw" alt="icon" />
       </div>
     </div>
   )
