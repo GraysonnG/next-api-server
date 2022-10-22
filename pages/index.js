@@ -33,6 +33,11 @@ export default function Home() {
           width: 300,
           aspectRatio: "2/1",
         }} src="/api/og/wbiw" alt="icon" />
+        <img style={{
+          display: 'inline-block',
+          width: 300,
+          aspectRatio: "2/1",
+        }} src="/api/og/bte" alt="icon" />
       </div>
     </div>
   )
