@@ -73,6 +73,7 @@ export default async function(req) {
             background: 'black',
           }}
           alt="" 
+          key={img}
           src={img} 
           />
         ))
@@ -83,7 +84,7 @@ export default async function(req) {
   return new ImageResponse((
     <div
       style={{
-        fontSize: 100,
+        fontSize: 90,
         fontWeight: 100,
         background: 'rgb(40,40,60)',
         color: 'white',
@@ -93,7 +94,6 @@ export default async function(req) {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        textShadow: '0 0 15px rgb(0 0 0/.6)',
         overflow: 'hidden',
       }}
     >
