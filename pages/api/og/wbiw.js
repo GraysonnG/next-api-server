@@ -57,29 +57,20 @@ export default async function(req) {
   const { searchParams } = new URL(req.url)
   const title = searchParams.get('title') || 'What is Blank Watching?'
   const data = await fetchWithCache("https://graphql.anilist.co", options)
-  const images = []
-
-  data.data.MediaListCollection.lists.forEach(list => {
-    list.entries.forEach(entry => {
-      const img = entry.media.coverImage.medium
-
-      if (img) {
-        images.push((
-        <img
-          style={{
-            minWidth: '100px',
-            minHeight: '140px',
-            objectFit: 'cover',
-            background: 'black',
-          }}
-          alt="" 
-          key={img}
-          src={img} 
-          />
-        ))
-      }
-    })
-  })
+  const imgStyles = {
+    minWidth: '100px',
+    minHeight: '140px',
+    objectFit: 'cover',
+    background: 'black',
+  }
+  const images = data.data.MediaListCollection.lists
+    .reduce((prev, curr) => {
+      prev.push(...curr.entries.map(entry => entry.media.coverImage.medium))
+      return prev
+    }, [])
+    .map(entry => (
+      <img style={imgStyles} key={entry} src={entry} alt="" />
+    ))
 
   return new ImageResponse((
     <div
