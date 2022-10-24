@@ -56,21 +56,20 @@ const fetchWithCache = async (url, options) => {
 export default async function(req) {
   const { searchParams } = new URL(req.url)
   const title = searchParams.get('title') || 'What is Blank Watching?'
-  const data = await fetchWithCache("https://graphql.anilist.co", options)
+  const response = await fetchWithCache("https://graphql.anilist.co", options)
   const imgStyles = {
     minWidth: '100px',
     minHeight: '140px',
     objectFit: 'cover',
     background: 'black',
   }
-  const images = data.data.MediaListCollection.lists
+  const images = response.data.MediaListCollection.lists
     .reduce((prev, curr) => {
-      prev.push(...curr.entries.map(entry => entry.media.coverImage.medium))
+      prev.push(...curr.entries.map(entry => (
+        <img style={imgStyles} key={entry.media.coverImage.medium} src={entry.media.coverImage.medium} alt="" />
+      )))
       return prev
     }, [])
-    .map(entry => (
-      <img style={imgStyles} key={entry} src={entry} alt="" />
-    ))
 
   return new ImageResponse((
     <div
